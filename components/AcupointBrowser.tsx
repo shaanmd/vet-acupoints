@@ -79,14 +79,26 @@ export default function AcupointBrowser({ acupoints, userId }: AcupointBrowserPr
       {/* Grid */}
       {filtered.length === 0 ? (
         <div className="flex flex-col items-center gap-3 py-16 text-center px-6">
-          <span className="text-4xl">🔍</span>
-          <p className="text-sm font-medium text-gray-500">No points found for &ldquo;{search}&rdquo;</p>
-          <button
-            onClick={() => { setSearch(''); setSelectedCategory('all') }}
-            className="text-sm text-tcvm-600 underline underline-offset-2"
-          >
-            Clear filters
-          </button>
+          {acupoints.length === 0 && !search ? (
+            // No data at all — Supabase not yet configured
+            <>
+              <span className="text-4xl">🌿</span>
+              <p className="text-sm font-medium text-gray-500">No acupoints loaded yet.</p>
+              <p className="text-xs text-gray-400 max-w-xs">Add your Supabase credentials to <code className="bg-gray-100 px-1 rounded">.env.local</code> and run <code className="bg-gray-100 px-1 rounded">npm run seed</code> to populate the database.</p>
+            </>
+          ) : (
+            // Search/filter returned nothing
+            <>
+              <span className="text-4xl">🔍</span>
+              <p className="text-sm font-medium text-gray-500">No points found for &ldquo;{search}&rdquo;</p>
+              <button
+                onClick={() => { setSearch(''); setSelectedCategory('all') }}
+                className="text-sm text-tcvm-600 underline underline-offset-2"
+              >
+                Clear filters
+              </button>
+            </>
+          )}
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-3 p-4 sm:grid-cols-2 xl:grid-cols-3">
