@@ -66,7 +66,18 @@ Please suggest an acupuncture treatment protocol.`
       messages: [{ role: 'user', content: userPrompt }],
     })
 
-    return new Response(stream.toReadableStream(), {
+    // Use textStream to pipe only the text deltas (not raw SSE JSON events)
+    const textStream = new ReadableStream({
+      async start(controller) {
+        const encoder = new TextEncoder()
+        for await (const text of stream.textStream) {
+          controller.enqueue(encoder.encode(text))
+        }
+        controller.close()
+      },
+    })
+
+    return new Response(textStream, {
       headers: {
         'Content-Type': 'text/plain; charset=utf-8',
         'Transfer-Encoding': 'chunked',
