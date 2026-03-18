@@ -7,21 +7,21 @@ export default async function AccountPage() {
 
   return (
     <div className="mx-auto max-w-md px-4 py-10">
-      <div className="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
+      <div className="rounded-card border border-vetai-border bg-vetai-surface p-8 shadow-sm">
         {user ? (
           <>
             <div className="mb-6 text-center">
-              <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-tcvm-100 text-2xl">
+              <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-vetai-secondary/15 text-2xl">
                 🐾
               </div>
-              <h1 className="text-xl font-bold text-gray-900">Your Account</h1>
+              <h1 className="text-xl font-serif font-semibold text-vetai-text">Your Account</h1>
             </div>
             <AuthForm userEmail={user.email} />
           </>
         ) : (
           <>
             <div className="mb-6 text-center">
-              <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-tcvm-100 text-2xl">
+              <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-vetai-secondary/15 text-2xl">
                 🐾
               </div>
             </div>
@@ -31,9 +31,9 @@ export default async function AccountPage() {
       </div>
 
       {!user && (
-        <div className="mt-6 rounded-xl border border-tcvm-100 bg-tcvm-50 p-4">
-          <p className="text-xs text-tcvm-700 font-medium text-center">
-            ✨ Sign in to save favourite acupoints and generate AI treatment protocols
+        <div className="mt-6 rounded-btn border border-vetai-border bg-vetai-bg p-4">
+          <p className="text-xs text-vetai-primary font-medium text-center">
+            ✦ Sign in to save favourite acupoints and generate AI treatment protocols
           </p>
         </div>
       )}

@@ -23,13 +23,13 @@ export default async function FavouritesPage() {
     return (
       <div className="flex flex-col items-center gap-4 py-20 px-6 text-center">
         <span className="text-5xl">⭐</span>
-        <h2 className="text-lg font-bold text-gray-900">No favourites yet</h2>
-        <p className="text-sm text-gray-500 max-w-xs">
+        <h2 className="text-lg font-serif font-semibold text-vetai-text">No favourites yet</h2>
+        <p className="text-sm text-vetai-muted max-w-xs">
           Tap the star on any acupoint to save it here for quick access during treatments.
         </p>
         <a
           href="/"
-          className="mt-2 rounded-xl bg-tcvm-600 px-6 py-3 text-sm font-semibold text-white hover:bg-tcvm-700 transition"
+          className="mt-2 rounded-btn bg-vetai-primary px-6 py-3 text-sm font-semibold text-white hover:bg-vetai-primary/90 transition"
         >
           Browse acupoints
         </a>
@@ -47,8 +47,8 @@ export default async function FavouritesPage() {
   return (
     <div>
       <div className="px-4 pt-4 pb-2">
-        <h1 className="text-lg font-bold text-gray-900">My Favourites</h1>
-        <p className="text-sm text-gray-500">{favIds.length} saved point{favIds.length !== 1 ? 's' : ''}</p>
+        <h1 className="text-lg font-serif font-semibold text-vetai-text">My Favourites</h1>
+        <p className="text-sm text-vetai-muted">{favIds.length} saved point{favIds.length !== 1 ? 's' : ''}</p>
       </div>
       <AcupointBrowser
         acupoints={(acupoints as Acupoint[]) ?? []}

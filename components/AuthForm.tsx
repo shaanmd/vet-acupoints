@@ -49,16 +49,16 @@ export default function AuthForm({ userEmail }: AuthFormProps) {
   if (userEmail) {
     return (
       <div className="flex flex-col items-center gap-6 py-8">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-tcvm-100">
-          <CheckCircle className="h-8 w-8 text-tcvm-600" />
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-vetai-secondary/15">
+          <CheckCircle className="h-8 w-8 text-vetai-secondary" />
         </div>
         <div className="text-center">
-          <p className="text-sm text-gray-500">Signed in as</p>
-          <p className="mt-1 font-semibold text-gray-900">{userEmail}</p>
+          <p className="text-sm text-vetai-muted">Signed in as</p>
+          <p className="mt-1 font-semibold text-vetai-text">{userEmail}</p>
         </div>
         <button
           onClick={handleSignOut}
-          className="flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 px-5 py-3 text-sm font-semibold text-red-600 transition hover:bg-red-100"
+          className="flex items-center gap-2 rounded-btn border border-red-200 bg-red-50 px-5 py-3 text-sm font-semibold text-red-600 transition hover:bg-red-100"
         >
           <LogOut className="h-4 w-4" />
           Sign out
@@ -71,19 +71,19 @@ export default function AuthForm({ userEmail }: AuthFormProps) {
   if (sent) {
     return (
       <div className="flex flex-col items-center gap-6 py-8">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-tcvm-100">
-          <Mail className="h-8 w-8 text-tcvm-600" />
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-vetai-secondary/15">
+          <Mail className="h-8 w-8 text-vetai-secondary" />
         </div>
         <div className="text-center">
-          <h3 className="text-lg font-bold text-gray-900">Check your email</h3>
-          <p className="mt-2 text-sm text-gray-500">
-            We sent a login link to <span className="font-medium text-gray-900">{email}</span>
+          <h3 className="text-lg font-serif font-semibold text-vetai-text">Check your email</h3>
+          <p className="mt-2 text-sm text-vetai-muted">
+            We sent a login link to <span className="font-medium text-vetai-text">{email}</span>
           </p>
-          <p className="mt-1 text-xs text-gray-400">Link expires in 1 hour</p>
+          <p className="mt-1 text-xs text-vetai-muted/70">Link expires in 1 hour</p>
         </div>
         <button
           onClick={() => { setSent(false); setEmail('') }}
-          className="text-sm text-tcvm-600 underline underline-offset-2"
+          className="text-sm text-vetai-secondary underline underline-offset-2"
         >
           Use a different email
         </button>
@@ -95,8 +95,8 @@ export default function AuthForm({ userEmail }: AuthFormProps) {
   return (
     <div className="flex flex-col gap-6">
       <div className="text-center">
-        <h2 className="text-2xl font-bold text-gray-900">Sign in to VetAcuPoints</h2>
-        <p className="mt-2 text-sm text-gray-500">
+        <h2 className="text-2xl font-serif font-semibold text-vetai-text">Sign in to VetAcuPoints</h2>
+        <p className="mt-2 text-sm text-vetai-muted">
           Enter your email and we&apos;ll send you a magic link — no password needed.
         </p>
       </div>
@@ -110,7 +110,7 @@ export default function AuthForm({ userEmail }: AuthFormProps) {
             onChange={e => setEmail(e.target.value)}
             placeholder="your@email.com"
             required
-            className="w-full rounded-xl border border-gray-200 bg-white py-3 pl-10 pr-4 text-sm text-gray-900 placeholder-gray-400 outline-none transition focus:border-tcvm-500 focus:ring-2 focus:ring-tcvm-200"
+            className="w-full rounded-btn border border-vetai-border bg-vetai-surface py-3 pl-10 pr-4 text-sm text-vetai-text placeholder-vetai-muted/60 outline-none transition focus:border-vetai-secondary focus:ring-2 focus:ring-vetai-secondary/20"
           />
         </div>
 
@@ -121,7 +121,7 @@ export default function AuthForm({ userEmail }: AuthFormProps) {
         <button
           type="submit"
           disabled={loading || !email.trim()}
-          className="flex items-center justify-center gap-2 rounded-xl bg-tcvm-600 py-3 text-sm font-semibold text-white transition hover:bg-tcvm-700 disabled:cursor-not-allowed disabled:opacity-60"
+          className="flex items-center justify-center gap-2 rounded-btn bg-vetai-primary py-3 text-sm font-semibold text-white transition hover:bg-vetai-primary/90 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {loading ? (
             <>
@@ -134,7 +134,7 @@ export default function AuthForm({ userEmail }: AuthFormProps) {
         </button>
       </form>
 
-      <p className="text-center text-xs text-gray-400">
+      <p className="text-center text-xs text-vetai-muted/70">
         A new account will be created automatically if you&apos;re new here.
       </p>
     </div>

@@ -58,7 +58,7 @@ export default function AcupointBrowser({ acupoints, userId }: AcupointBrowserPr
   return (
     <>
       {/* Sticky search + filters */}
-      <div className="sticky top-[57px] md:top-[61px] z-10 bg-gray-50 px-4 pt-3 pb-3 border-b border-gray-100 space-y-3">
+      <div className="sticky top-[57px] md:top-[61px] z-10 bg-vetai-bg px-4 pt-3 pb-3 border-b border-vetai-border space-y-3">
         <SearchBar value={search} onChange={setSearch} />
         <FilterRow
           selectedSpecies={selectedSpecies}
@@ -70,7 +70,7 @@ export default function AcupointBrowser({ acupoints, userId }: AcupointBrowserPr
 
       {/* Results count */}
       <div className="px-4 pt-3 pb-1">
-        <p className="text-xs text-gray-400 font-medium">
+        <p className="text-xs text-vetai-muted/70 font-medium">
           {filtered.length} point{filtered.length !== 1 ? 's' : ''}
           {search ? ` matching "${search}"` : ''}
         </p>
@@ -83,17 +83,17 @@ export default function AcupointBrowser({ acupoints, userId }: AcupointBrowserPr
             // No data at all — Supabase not yet configured
             <>
               <span className="text-4xl">🌿</span>
-              <p className="text-sm font-medium text-gray-500">No acupoints loaded yet.</p>
-              <p className="text-xs text-gray-400 max-w-xs">Add your Supabase credentials to <code className="bg-gray-100 px-1 rounded">.env.local</code> and run <code className="bg-gray-100 px-1 rounded">npm run seed</code> to populate the database.</p>
+              <p className="text-sm font-medium text-vetai-muted">No acupoints loaded yet.</p>
+              <p className="text-xs text-vetai-muted/70 max-w-xs">Add your Supabase credentials to <code className="bg-vetai-border/50 px-1 rounded">.env.local</code> and run <code className="bg-vetai-border/50 px-1 rounded">npm run seed</code> to populate the database.</p>
             </>
           ) : (
             // Search/filter returned nothing
             <>
               <span className="text-4xl">🔍</span>
-              <p className="text-sm font-medium text-gray-500">No points found for &ldquo;{search}&rdquo;</p>
+              <p className="text-sm font-medium text-vetai-muted">No points found for &ldquo;{search}&rdquo;</p>
               <button
                 onClick={() => { setSearch(''); setSelectedCategory('all') }}
-                className="text-sm text-tcvm-600 underline underline-offset-2"
+                className="text-sm text-vetai-secondary underline underline-offset-2"
               >
                 Clear filters
               </button>

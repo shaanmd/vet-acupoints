@@ -20,12 +20,13 @@ const SPECIES_LABELS: { value: Species; label: string; emoji: string }[] = [
   { value: 'equine', label: 'Equine', emoji: '🐴' },
 ]
 
+// VetAI-aligned gradients — anchor to vetai-primary/secondary where possible
 const CATEGORY_COLORS: Record<string, string> = {
-  'Master Points':           'from-indigo-500 to-purple-600',
-  'Influential/Bone/Marrow': 'from-amber-400 to-orange-600',
-  'Back-Shu & Front-Mu':    'from-rose-400 to-pink-600',
-  'Five Shu Points':         'from-cyan-400 to-blue-600',
-  'Empirical & Distal':      'from-emerald-400 to-teal-600',
+  'Master Points':           'from-[#1A3A5C] to-[#2A5A8C]',
+  'Influential/Bone/Marrow': 'from-amber-600 to-amber-800',
+  'Back-Shu & Front-Mu':    'from-[#FF6B6B] to-[#C0392B]',
+  'Five Shu Points':         'from-[#48C9A0] to-[#1A3A5C]',
+  'Empirical & Distal':      'from-emerald-600 to-emerald-800',
 }
 
 export default function AcupointBottomSheet({
@@ -88,7 +89,7 @@ export default function AcupointBottomSheet({
       {/* Sheet / Modal */}
       <div
         ref={sheetRef}
-        className={`fixed z-50 bg-white shadow-2xl transition-all duration-300 ease-out
+        className={`fixed z-50 bg-vetai-surface shadow-2xl transition-all duration-300 ease-out
           /* Mobile: bottom sheet */
           bottom-0 left-0 right-0 max-h-[88vh] rounded-t-2xl overflow-hidden flex flex-col
           /* Desktop: centred modal */
@@ -102,15 +103,15 @@ export default function AcupointBottomSheet({
       >
         {/* Drag handle (mobile only) */}
         <div className="flex justify-center pt-3 pb-1 md:hidden">
-          <div className="h-1 w-10 rounded-full bg-gray-300" />
+          <div className="h-1 w-10 rounded-full bg-vetai-border" />
         </div>
 
         {/* Header band */}
         <div className={`relative flex-shrink-0 bg-gradient-to-r ${gradient} px-5 py-5`}>
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
-              <p className="font-mono text-3xl font-bold text-white leading-tight">{point.id}</p>
-              <p className="text-sm font-medium text-white/80 mt-0.5">{point.name}</p>
+              <p className="font-mono text-3xl font-semibold text-white leading-tight tracking-tight">{point.id}</p>
+              <p className="font-serif text-sm italic text-white/80 mt-0.5">{point.name}</p>
               {point.alias && (
                 <p className="text-xs italic text-white/60 mt-0.5">{point.alias}</p>
               )}
@@ -141,7 +142,7 @@ export default function AcupointBottomSheet({
                 onClick={() => setSelectedSpecies(s.value)}
                 className={`flex items-center gap-1 rounded-md px-3 py-1.5 text-xs font-semibold transition-all ${
                   selectedSpecies === s.value
-                    ? 'bg-white text-gray-900 shadow-sm'
+                    ? 'bg-vetai-surface text-vetai-text shadow-sm'
                     : 'text-white/70 hover:text-white'
                 }`}
               >
@@ -157,45 +158,45 @@ export default function AcupointBottomSheet({
 
           {/* Grouping */}
           {point.grouping && (
-            <p className="text-xs font-medium text-gray-500 italic">{point.grouping}</p>
+            <p className="text-xs font-medium text-vetai-muted italic">{point.grouping}</p>
           )}
 
           {/* Anatomical Location */}
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <MapPin className="h-4 w-4 text-tcvm-600 flex-shrink-0" />
-              <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide">
+              <MapPin className="h-4 w-4 text-vetai-secondary flex-shrink-0" />
+              <h3 className="text-xs font-semibold text-vetai-text uppercase tracking-widest">
                 Anatomical Location
               </h3>
             </div>
-            <div className="rounded-xl border border-tcvm-100 bg-tcvm-50 p-4">
-              <p className="text-sm text-gray-700 leading-relaxed">{locationText}</p>
+            <div className="rounded-card border border-vetai-border bg-vetai-bg p-4">
+              <p className="text-sm text-vetai-text leading-relaxed">{locationText}</p>
             </div>
           </div>
 
           {/* TCM Functions */}
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <Activity className="h-4 w-4 text-indigo-500 flex-shrink-0" />
-              <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide">
+              <Activity className="h-4 w-4 text-vetai-primary flex-shrink-0" />
+              <h3 className="text-xs font-semibold text-vetai-text uppercase tracking-widest">
                 TCM Functions
               </h3>
             </div>
-            <div className="rounded-xl border border-indigo-100 bg-indigo-50/60 p-4">
-              <p className="text-sm text-gray-700 leading-relaxed">{point.tcm_indication}</p>
+            <div className="rounded-card border border-vetai-border bg-vetai-bg p-4">
+              <p className="text-sm text-vetai-text leading-relaxed">{point.tcm_indication}</p>
             </div>
           </div>
 
           {/* Western Applications */}
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <Stethoscope className="h-4 w-4 text-rose-500 flex-shrink-0" />
-              <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide">
+              <Stethoscope className="h-4 w-4 text-vetai-accent flex-shrink-0" />
+              <h3 className="text-xs font-semibold text-vetai-text uppercase tracking-widest">
                 Western Applications
               </h3>
             </div>
-            <div className="rounded-xl border border-rose-100 bg-rose-50/60 p-4">
-              <p className="text-sm text-gray-700 leading-relaxed">{point.western_indication}</p>
+            <div className="rounded-card border border-vetai-border bg-vetai-bg p-4">
+              <p className="text-sm text-vetai-text leading-relaxed">{point.western_indication}</p>
             </div>
           </div>
 

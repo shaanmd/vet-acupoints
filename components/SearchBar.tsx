@@ -14,7 +14,7 @@ export default function SearchBar({
 }: SearchBarProps) {
   return (
     <div className="relative w-full">
-      <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 pointer-events-none" />
+      <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-vetai-muted pointer-events-none" />
       <input
         type="search"
         value={value}
@@ -22,13 +22,13 @@ export default function SearchBar({
         placeholder={placeholder}
         autoComplete="off"
         inputMode="search"
-        className="w-full rounded-xl border border-gray-200 bg-white py-3 pl-10 pr-10 text-sm text-gray-900 placeholder-gray-400 outline-none transition focus:border-tcvm-500 focus:ring-2 focus:ring-tcvm-200"
+        className="w-full rounded-btn border border-vetai-border bg-vetai-surface py-3 pl-11 pr-10 text-sm text-vetai-text placeholder-vetai-muted outline-none transition focus:border-vetai-secondary focus:ring-2 focus:ring-vetai-secondary/20 font-sans"
       />
       {value && (
         <button
           onClick={() => onChange('')}
           aria-label="Clear search"
-          className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-0.5 text-gray-400 hover:text-gray-600 transition"
+          className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-0.5 text-vetai-muted hover:text-vetai-text transition"
         >
           <X className="h-4 w-4" />
         </button>

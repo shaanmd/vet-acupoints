@@ -8,7 +8,7 @@ const SPECIES: { value: Species; label: string; emoji: string }[] = [
 ]
 
 const CATEGORIES: { value: PointCategory | 'all'; label: string }[] = [
-  { value: 'all', label: 'All' },
+  { value: 'all', label: 'All Points' },
   { value: 'Master Points', label: 'Master' },
   { value: 'Influential/Bone/Marrow', label: 'Influential' },
   { value: 'Back-Shu & Front-Mu', label: 'Shu-Mu' },
@@ -37,10 +37,10 @@ export default function FilterRow({
           <button
             key={s.value}
             onClick={() => onSpeciesChange(s.value)}
-            className={`flex flex-shrink-0 items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition-all ${
+            className={`flex flex-shrink-0 items-center gap-1.5 rounded-tag px-4 py-2 text-sm font-medium transition-all ${
               selectedSpecies === s.value
-                ? 'bg-tcvm-600 text-white shadow-sm'
-                : 'border border-gray-200 bg-white text-gray-600 hover:border-tcvm-300 hover:text-tcvm-700'
+                ? 'bg-vetai-primary text-white shadow-sm'
+                : 'border border-vetai-border bg-vetai-surface text-vetai-muted hover:border-vetai-secondary hover:text-vetai-primary'
             }`}
           >
             <span>{s.emoji}</span>
@@ -55,10 +55,10 @@ export default function FilterRow({
           <button
             key={c.value}
             onClick={() => onCategoryChange(c.value)}
-            className={`flex-shrink-0 rounded-full px-3 py-1.5 text-xs font-semibold transition-all ${
+            className={`flex-shrink-0 rounded-tag px-3 py-1.5 text-xs font-medium transition-all ${
               selectedCategory === c.value
-                ? 'bg-tcvm-600 text-white shadow-sm'
-                : 'border border-gray-200 bg-white text-gray-500 hover:border-tcvm-300 hover:text-tcvm-700'
+                ? 'bg-vetai-secondary text-vetai-primary font-semibold shadow-sm'
+                : 'border border-vetai-border bg-vetai-surface text-vetai-muted hover:border-vetai-secondary hover:text-vetai-primary'
             }`}
           >
             {c.label}

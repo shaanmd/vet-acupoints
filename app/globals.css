@@ -2,12 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================
+   SDVetStudio — CSS Token Foundation
+   Theme: VetAI Overlap
+   ============================================ */
+:root {
+  /* VetAI Overlap tokens */
+  --vetai-primary:   #1A3A5C;
+  --vetai-secondary: #48C9A0;
+  --vetai-bg:        #F0F7F5;
+  --vetai-surface:   #FFFFFF;
+  --vetai-text:      #0D2035;
+  --vetai-muted:     #5A8080;
+  --vetai-border:    #C0DDD6;
+  --vetai-accent:    #FF6B6B;
+}
+
 @layer base {
   html {
     @apply h-full;
   }
   body {
-    @apply h-full bg-gray-50 text-gray-900 antialiased;
+    @apply h-full antialiased;
+    background-color: var(--vetai-bg);
+    color: var(--vetai-text);
+    font-family: 'DM Sans', system-ui, sans-serif;
   }
 }
 
@@ -19,5 +38,15 @@
   }
   .scrollbar-none::-webkit-scrollbar {
     display: none;
+  }
+
+  /* AI gradient strip — top of AI-related cards */
+  .vetai-ai-strip::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--vetai-primary), var(--vetai-secondary));
+    border-radius: 18px 18px 0 0;
   }
 }

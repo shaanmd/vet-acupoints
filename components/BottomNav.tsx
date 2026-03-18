@@ -19,7 +19,7 @@ export default function BottomNav({ favouriteCount = 0, isLoggedIn = false }: Bo
   const pathname = usePathname()
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-30 border-t border-gray-100 bg-white/95 backdrop-blur-md md:hidden">
+    <nav className="fixed bottom-0 left-0 right-0 z-30 border-t border-vetai-border bg-vetai-surface/95 backdrop-blur-md md:hidden">
       <div className="flex items-stretch">
         {NAV_ITEMS.map(item => {
           const isActive = pathname === item.href
@@ -31,15 +31,15 @@ export default function BottomNav({ favouriteCount = 0, isLoggedIn = false }: Bo
             <Link
               key={item.href}
               href={item.href}
-              className={`relative flex flex-1 flex-col items-center justify-center gap-0.5 py-3 text-[10px] font-semibold transition-colors ${
-                isActive ? 'text-tcvm-600' : 'text-gray-400 hover:text-tcvm-500'
+              className={`relative flex flex-1 flex-col items-center justify-center gap-0.5 py-3 text-[10px] font-medium transition-colors ${
+                isActive ? 'text-vetai-primary' : 'text-vetai-muted hover:text-vetai-primary'
               }`}
             >
               <div className="relative">
                 <Icon className="h-5 w-5" />
                 {/* Dot badge for favourites */}
                 {isFavs && favouriteCount > 0 && (
-                  <span className="absolute -right-1 -top-1 flex h-2 w-2 rounded-full bg-amber-400" />
+                  <span className="absolute -right-1 -top-1 flex h-2 w-2 rounded-full bg-vetai-accent" />
                 )}
                 {/* Lock icon for protocol when not logged in */}
                 {isProtocol && !isLoggedIn && (
@@ -49,7 +49,7 @@ export default function BottomNav({ favouriteCount = 0, isLoggedIn = false }: Bo
               {item.label}
               {/* Active indicator */}
               {isActive && (
-                <span className="absolute top-0 left-1/2 h-0.5 w-8 -translate-x-1/2 rounded-full bg-tcvm-600" />
+                <span className="absolute top-0 left-1/2 h-0.5 w-8 -translate-x-1/2 rounded-full bg-vetai-primary" />
               )}
             </Link>
           )
